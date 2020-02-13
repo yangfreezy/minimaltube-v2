@@ -40,7 +40,6 @@ const SearchBar = ({ onChange, setMainYoutubeVideo, setYoutubeVideos }) => {
         style={{ margin: 8 }}
         placeholder="Search"
         fullWidth
-        margin="100px"
         value={search}
         InputLabelProps={{
           shrink: true
