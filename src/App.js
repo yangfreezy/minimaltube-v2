@@ -39,18 +39,18 @@ const App = () => {
             setYoutubeVideos={setYoutubeVideos}
             setMainYoutubeVideo={setMainYoutubeVideo}
           />
-          <div className="button-bar">
-            {youtubeVideos.length ? (
+
+          {youtubeVideos.length ? (
+            <div className="button-bar">
               <Button size="small" onClick={toggleDisplay}>
                 {displayRelevantVideos ? "Hide" : "Show More"}
               </Button>
-            ) : null}
-            {youtubeVideos.length ? (
               <Button size="small" onClick={clearState}>
                 Clear
               </Button>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
+
           {youtubeVideos.length && displayRelevantVideos ? (
             <VideoList
               videos={youtubeVideos}
