@@ -21,6 +21,8 @@ const SearchBar = ({ onChange, setMainYoutubeVideo, setYoutubeVideos }) => {
           maxResults: 6,
           q: search,
           key: "AIzaSyDq43D0kSIw0fkhyRHFtBO1oGWRuJ9NYkk"
+          // Note: Leaving API Key in so people can clone it and test it easily.
+          // Ordinarily would store API Key in .env.
         }
       });
       await setMainYoutubeVideo(data.data.items[0]);
