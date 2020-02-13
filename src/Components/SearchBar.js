@@ -35,7 +35,7 @@ const SearchBar = ({ onChange, setMainYoutubeVideo, setYoutubeVideos }) => {
       <TextField
         onChange={e => handleChange(e)}
         id="standard-full-width"
-        style={{ margin: 8, backgroundColor: "white !important" }}
+        style={{ margin: 8 }}
         placeholder="Search"
         fullWidth
         margin="100px"
