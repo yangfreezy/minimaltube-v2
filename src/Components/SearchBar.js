@@ -15,12 +15,12 @@ const SearchBar = ({ onChange, setMainYoutubeVideo, setYoutubeVideos }) => {
     e.preventDefault();
     let data;
     try {
-      data = await axios.get(process.env.REACT_APP_YOUTUBE_SEARCH_URL, {
+      data = await axios.get("https://www.googleapis.com/youtube/v3/search", {
         params: {
           part: "snippet",
           maxResults: 6,
           q: search,
-          key: process.env.REACT_APP_YOUTUBE_API_KEY
+          key: "AIzaSyDq43D0kSIw0fkhyRHFtBO1oGWRuJ9NYkk"
         }
       });
       await setMainYoutubeVideo(data.data.items[0]);
