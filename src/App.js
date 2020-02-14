@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, FormHelperText } from "@material-ui/core";
 
 import {
@@ -34,44 +34,39 @@ const App = () => {
     setShowRelevantVideos(false);
   };
   return (
-    <Fragment>
-      <div className="window">
-        <div className="main-layout">
-          {Object.keys(mainYoutubeVideo).length ? (
-            <MainVideo
-              setErrorMessage={setErrorMessage}
-              video={mainYoutubeVideo}
-            />
-          ) : (
-            <LoadingLogo />
-          )}
-          {errorMessage.length ? (
-            <FormHelperText error={true} children={errorMessage} />
-          ) : null}
-          <SearchBar
-            setRelevantVideos={setRelevantVideos}
+    <div className="window">
+      <div className="main-layout">
+        {Object.keys(mainYoutubeVideo).length ? (
+          <MainVideo video={mainYoutubeVideo} />
+        ) : (
+          <LoadingLogo />
+        )}
+        {errorMessage.length ? (
+          <FormHelperText error={true} children={errorMessage} />
+        ) : null}
+        <SearchBar
+          setRelevantVideos={setRelevantVideos}
+          setMainYoutubeVideo={setMainYoutubeVideo}
+          setErrorMessage={setErrorMessage}
+        />
+        {relevantVideos.length ? (
+          <div className="button-bar">
+            <Button size="small" onClick={toggleDisplay}>
+              {showRelevantVideos ? "Hide" : "Show More"}
+            </Button>
+            <Button size="small" onClick={clearState}>
+              Clear
+            </Button>
+          </div>
+        ) : null}
+        {relevantVideos.length && showRelevantVideos ? (
+          <VideoList
+            videos={relevantVideos}
             setMainYoutubeVideo={setMainYoutubeVideo}
-            setErrorMessage={setErrorMessage}
           />
-          {relevantVideos.length ? (
-            <div className="button-bar">
-              <Button size="small" onClick={toggleDisplay}>
-                {showRelevantVideos ? "Hide" : "Show More"}
-              </Button>
-              <Button size="small" onClick={clearState}>
-                Clear
-              </Button>
-            </div>
-          ) : null}
-          {relevantVideos.length && showRelevantVideos ? (
-            <VideoList
-              videos={relevantVideos}
-              setMainYoutubeVideo={setMainYoutubeVideo}
-            />
-          ) : null}
-        </div>
+        ) : null}
       </div>
-    </Fragment>
+    </div>
   );
 };
 
