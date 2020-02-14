@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Button } from "@material-ui/core";
+import { Button, FormHelperText } from "@material-ui/core";
 
 import {
   MainVideo,
@@ -19,8 +19,11 @@ const App = () => {
   const [mainYoutubeVideo, setMainYoutubeVideo] = useState({});
   const [relevantVideos, setRelevantVideos] = useState([]);
   const [showRelevantVideos, setShowRelevantVideos] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {}, [relevantVideos, mainYoutubeVideo]);
+  useEffect(() => {
+    setErrorMessage("");
+  }, [relevantVideos, mainYoutubeVideo]);
 
   const toggleDisplay = () => {
     setShowRelevantVideos(!showRelevantVideos);
@@ -30,19 +33,25 @@ const App = () => {
     setRelevantVideos([]);
     setShowRelevantVideos(false);
   };
-
   return (
     <Fragment>
       <div className="window">
         <div className="main-layout">
           {Object.keys(mainYoutubeVideo).length ? (
-            <MainVideo video={mainYoutubeVideo} />
+            <MainVideo
+              setErrorMessage={setErrorMessage}
+              video={mainYoutubeVideo}
+            />
           ) : (
             <LoadingLogo />
           )}
+          {errorMessage.length ? (
+            <FormHelperText error={true} children={errorMessage} />
+          ) : null}
           <SearchBar
-            setYoutubeVideos={setRelevantVideos}
+            setRelevantVideos={setRelevantVideos}
             setMainYoutubeVideo={setMainYoutubeVideo}
+            setErrorMessage={setErrorMessage}
           />
           {relevantVideos.length ? (
             <div className="button-bar">

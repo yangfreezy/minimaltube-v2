@@ -12,8 +12,8 @@ const MainVideo = ({ video }) => {
         src={`http://www.youtube.com/embed/${video.id.videoId}`}
         width="840"
         height="472.5"
-        frameborder="0"
-        allowfullscreen
+        frameBorder="0"
+        allowFullScreen
       />
     </div>
   );
