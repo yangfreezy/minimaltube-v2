@@ -10,20 +10,26 @@ import {
 
 import "./App.css";
 
+/*
+  - Make the video thumbnails a scrollable gallery
+  - Add a tiny div above the thumbnails for the title of the hovered div to appear
+  - Figure out how to fix the stuff from going off the screen - google: why does my image appear off screen css
+ */
+
 const App = () => {
   const [mainYoutubeVideo, setMainYoutubeVideo] = useState({});
   const [youtubeVideos, setYoutubeVideos] = useState([]);
-  const [displayRelevantVideos, setDisplayRelevantVideos] = useState(false);
+  const [showOtherVideos, setShowOtherVideos] = useState(false);
 
   useEffect(() => {}, [youtubeVideos, mainYoutubeVideo]);
 
   const toggleDisplay = () => {
-    setDisplayRelevantVideos(!displayRelevantVideos);
+    setShowOtherVideos(!showOtherVideos);
   };
   const clearState = () => {
     setMainYoutubeVideo({});
     setYoutubeVideos([]);
-    setDisplayRelevantVideos(false);
+    setShowOtherVideos(false);
   };
 
   return (
@@ -39,19 +45,17 @@ const App = () => {
             setYoutubeVideos={setYoutubeVideos}
             setMainYoutubeVideo={setMainYoutubeVideo}
           />
-
           {youtubeVideos.length ? (
             <div className="button-bar">
               <Button size="small" onClick={toggleDisplay}>
-                {displayRelevantVideos ? "Hide" : "Show More"}
+                {showOtherVideos ? "Hide" : "Show More"}
               </Button>
               <Button size="small" onClick={clearState}>
                 Clear
               </Button>
             </div>
           ) : null}
-
-          {youtubeVideos.length && displayRelevantVideos ? (
+          {youtubeVideos.length && showOtherVideos ? (
             <VideoList
               videos={youtubeVideos}
               setMainYoutubeVideo={setMainYoutubeVideo}

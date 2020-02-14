@@ -20,14 +20,12 @@ const SearchBar = ({ onChange, setMainYoutubeVideo, setYoutubeVideos }) => {
           part: "snippet",
           maxResults: 6,
           q: search,
-          key: "AIzaSyDq43D0kSIw0fkhyRHFtBO1oGWRuJ9NYkk"
-          // Note: Leaving API Key in so people can clone it and test it easily.
-          // Ordinarily would store API Key in .env.
+          key: process.env.REACT_APP_YOUTUBE_API_KEY
         }
       });
-      await setMainYoutubeVideo(data.data.items[0]);
-      await setYoutubeVideos(data.data.items.slice(1));
-      await setSearch("");
+      setMainYoutubeVideo(data.data.items[0]);
+      setYoutubeVideos(data.data.items.slice(1));
+      setSearch("");
     } catch (err) {
       console.error(err);
     }
