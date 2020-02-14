@@ -10,7 +10,8 @@ const VideoThumbnail = ({ video, setMainYoutubeVideo }) => {
         alt={lodash.unescape(video.snippet.title)}
         src={
           video.snippet.thumbnails.high.url ||
-          video.snippet.thumbnails.medium.url
+          video.snippet.thumbnails.medium.url ||
+          video.snippet.thumbnails.default.url
         }
         onClick={e => setMainYoutubeVideo(video)}
       />

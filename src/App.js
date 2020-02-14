@@ -11,25 +11,24 @@ import {
 import "./App.css";
 
 /*
-  - Make the video thumbnails a scrollable gallery
+  - Make the video thumbnails a scrollable gallery of length 25
   - Add a tiny div above the thumbnails for the title of the hovered div to appear
-  - Figure out how to fix the stuff from going off the screen - google: why does my image appear off screen css
  */
 
 const App = () => {
   const [mainYoutubeVideo, setMainYoutubeVideo] = useState({});
-  const [youtubeVideos, setYoutubeVideos] = useState([]);
-  const [showOtherVideos, setShowOtherVideos] = useState(false);
+  const [relevantVideos, setRelevantVideos] = useState([]);
+  const [showRelevantVideos, setShowRelevantVideos] = useState(false);
 
-  useEffect(() => {}, [youtubeVideos, mainYoutubeVideo]);
+  useEffect(() => {}, [relevantVideos, mainYoutubeVideo]);
 
   const toggleDisplay = () => {
-    setShowOtherVideos(!showOtherVideos);
+    setShowRelevantVideos(!showRelevantVideos);
   };
   const clearState = () => {
     setMainYoutubeVideo({});
-    setYoutubeVideos([]);
-    setShowOtherVideos(false);
+    setRelevantVideos([]);
+    setShowRelevantVideos(false);
   };
 
   return (
@@ -42,22 +41,22 @@ const App = () => {
             <LoadingLogo />
           )}
           <SearchBar
-            setYoutubeVideos={setYoutubeVideos}
+            setYoutubeVideos={setRelevantVideos}
             setMainYoutubeVideo={setMainYoutubeVideo}
           />
-          {youtubeVideos.length ? (
+          {relevantVideos.length ? (
             <div className="button-bar">
               <Button size="small" onClick={toggleDisplay}>
-                {showOtherVideos ? "Hide" : "Show More"}
+                {showRelevantVideos ? "Hide" : "Show More"}
               </Button>
               <Button size="small" onClick={clearState}>
                 Clear
               </Button>
             </div>
           ) : null}
-          {youtubeVideos.length && showOtherVideos ? (
+          {relevantVideos.length && showRelevantVideos ? (
             <VideoList
-              videos={youtubeVideos}
+              videos={relevantVideos}
               setMainYoutubeVideo={setMainYoutubeVideo}
             />
           ) : null}
