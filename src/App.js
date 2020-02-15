@@ -10,11 +10,6 @@ import {
 
 import "./App.css";
 
-/*
-  - Make the video thumbnails a scrollable gallery of length 25
-  - Add a tiny div above the thumbnails for the title of the hovered div to appear
- */
-
 const App = () => {
   const [mainYoutubeVideo, setMainYoutubeVideo] = useState({});
   const [relevantVideos, setRelevantVideos] = useState([]);
@@ -28,11 +23,13 @@ const App = () => {
   const toggleDisplay = () => {
     setShowRelevantVideos(!showRelevantVideos);
   };
+
   const clearState = () => {
     setMainYoutubeVideo({});
     setRelevantVideos([]);
     setShowRelevantVideos(false);
   };
+
   return (
     <div className="window">
       <div className="main-layout">

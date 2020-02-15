@@ -20,13 +20,13 @@ const SearchBar = ({
   const searchHandler = async (e, search) => {
     e.preventDefault();
     try {
-      const data = await getYoutubeVideos(search);
-      if (!data) return setErrorMessage("Error retrieving videos");
-      if (!data.items) {
+      const { data } = await getYoutubeVideos(search);
+      if (!data.ok) return setErrorMessage("Error retrieving videos");
+      if (!data.items.length) {
         return setErrorMessage("No videos found for that query!");
       } else {
-        await setMainYoutubeVideo(data.items[0]);
-        await setRelevantVideos(data.items.slice(1));
+        setMainYoutubeVideo(data.items[0]);
+        setRelevantVideos(data.items.slice(1));
         setSearch("");
       }
     } catch (err) {

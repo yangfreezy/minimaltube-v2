@@ -11,12 +11,12 @@ const getYoutubeVideos = async search => {
         key: process.env.REACT_APP_YOUTUBE_API_KEY
       }
     });
+    data.data.ok = true;
     return data;
   } catch (err) {
     console.error(err);
-    err.response.data.error.errors.map(error => console.log(error.message));
-    data = { ok: false, err };
-    return;
+    err.response.data.error.errors.map(error => console.error(error.message));
+    return { data: { ok: false } };
   }
 };
 
