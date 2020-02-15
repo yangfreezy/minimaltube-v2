@@ -11,24 +11,29 @@ import {
 import "./App.css";
 
 const App = () => {
+  // Video state
   const [mainYoutubeVideo, setMainYoutubeVideo] = useState({});
   const [relevantVideos, setRelevantVideos] = useState([]);
+
+  // Toggle display of relevant videos
   const [showRelevantVideos, setShowRelevantVideos] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    setErrorMessage("");
-  }, [relevantVideos, mainYoutubeVideo]);
-
   const toggleDisplay = () => {
     setShowRelevantVideos(!showRelevantVideos);
   };
 
+  // Clear state when user clicks "clear" button
   const clearState = () => {
     setMainYoutubeVideo({});
     setRelevantVideos([]);
     setShowRelevantVideos(false);
   };
+
+  // Display error messages
+  const [errorMessage, setErrorMessage] = useState("");
+  // Reset error messages on successful load
+  useEffect(() => {
+    setErrorMessage("");
+  }, [relevantVideos, mainYoutubeVideo]);
 
   return (
     <div className="window">
