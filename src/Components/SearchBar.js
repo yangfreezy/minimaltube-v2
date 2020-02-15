@@ -6,7 +6,6 @@ import getYoutubeVideos from "../Handlers/getYoutubeVideos";
 import "./../App.css";
 
 const SearchBar = ({
-  onChange,
   setMainYoutubeVideo,
   setRelevantVideos,
   setErrorMessage
