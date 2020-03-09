@@ -1,12 +1,16 @@
 import React from "react";
 import lodash from "lodash";
 
+import { Layout } from "./../Layouts";
+
 import "../App.css";
 
 const MainVideo = ({ video }) => {
   return (
-    <div className="main-video">
-      <div className="title"> {lodash.unescape(video.snippet.title)}</div>
+    <Layout stylesClass="main-video">
+      <Layout stylesClass="title">
+        {lodash.unescape(video.snippet.title)}
+      </Layout>
       <iframe
         title={lodash.unescape(video.snippet.title)}
         src={`http://www.youtube.com/embed/${video.id.videoId}`}
@@ -15,7 +19,7 @@ const MainVideo = ({ video }) => {
         frameBorder="0"
         allowFullScreen
       />
-    </div>
+    </Layout>
   );
 };
 export default MainVideo;

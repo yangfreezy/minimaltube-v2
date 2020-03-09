@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Button, FormHelperText } from "@material-ui/core";
+import { FormHelperText } from "@material-ui/core";
 
 import {
+  ButtonBar,
+  LoadingLogo,
   MainVideo,
+  Render,
   VideoList,
-  SearchBar,
-  LoadingLogo
-} from "./Components/index";
+  SearchBar
+} from "./Components";
+import { Layout } from "./Layouts";
 
 import "./App.css";
 
@@ -36,39 +39,36 @@ const App = () => {
   }, [relevantVideos, mainYoutubeVideo]);
 
   return (
-    <div className="window">
-      <div className="main-layout">
+    <Layout stylesClass="window">
+      <Layout stylesClass="main-layout">
         {Object.keys(mainYoutubeVideo).length ? (
           <MainVideo video={mainYoutubeVideo} />
         ) : (
           <LoadingLogo />
         )}
-        {errorMessage.length ? (
+        <Render renderIf={errorMessage.length}>
           <FormHelperText error={true} children={errorMessage} />
-        ) : null}
+        </Render>
         <SearchBar
           setRelevantVideos={setRelevantVideos}
           setMainYoutubeVideo={setMainYoutubeVideo}
           setErrorMessage={setErrorMessage}
         />
-        {relevantVideos.length ? (
-          <div className="button-bar">
-            <Button size="small" onClick={toggleDisplay}>
-              {showRelevantVideos ? "Hide" : "Show More"}
-            </Button>
-            <Button size="small" onClick={clearState}>
-              Clear
-            </Button>
-          </div>
-        ) : null}
-        {relevantVideos.length && showRelevantVideos ? (
+        <Render renderIf={relevantVideos.length}>
+          <ButtonBar
+            toggleDisplay={toggleDisplay}
+            showRelevantVideos={showRelevantVideos}
+            clearState={clearState}
+          />
+        </Render>
+        <Render renderIf={relevantVideos.length && showRelevantVideos}>
           <VideoList
             videos={relevantVideos}
             setMainYoutubeVideo={setMainYoutubeVideo}
           />
-        ) : null}
-      </div>
-    </div>
+        </Render>
+      </Layout>
+    </Layout>
   );
 };
 

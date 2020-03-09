@@ -1,11 +1,13 @@
 import React from "react";
 import lodash from "lodash";
 
+import { Layout } from "./../Layouts";
+
 import "../App.css";
 
 const VideoThumbnail = ({ video, setMainYoutubeVideo }) => {
   return (
-    <div className="video-thumbnail">
+    <Layout stylesClass="video-thumbnail">
       <img
         alt={lodash.unescape(video.snippet.title)}
         src={
@@ -15,7 +17,7 @@ const VideoThumbnail = ({ video, setMainYoutubeVideo }) => {
         }
         onClick={e => setMainYoutubeVideo(video)}
       />
-    </div>
+    </Layout>
   );
 };
 export default VideoThumbnail;
