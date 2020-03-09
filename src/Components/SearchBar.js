@@ -8,6 +8,7 @@ import "./../App.css";
 
 const SearchBar = ({
   setMainYoutubeVideo,
+  setDisplayMainYoutubeVideo,
   setRelevantVideos,
   setErrorMessage
 }) => {
@@ -26,6 +27,7 @@ const SearchBar = ({
         return setErrorMessage("No videos found for that query!");
       } else {
         setMainYoutubeVideo(data.items[0]);
+        setDisplayMainYoutubeVideo(true);
         setRelevantVideos(data.items.slice(1));
         setSearch("");
       }

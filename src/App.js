@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FormHelperText } from "@material-ui/core";
 
 import {
   ButtonBar,
+  ErrorMessage,
   LoadingLogo,
   MainVideo,
   Render,
@@ -17,6 +17,9 @@ const App = () => {
   // Video state
   const [mainYoutubeVideo, setMainYoutubeVideo] = useState({});
   const [relevantVideos, setRelevantVideos] = useState([]);
+
+  // Toggle display of main youtube video
+  const [displayMainYoutubeVideo, setDisplayMainYoutubeVideo] = useState(false);
 
   // Toggle display of relevant videos
   const [showRelevantVideos, setShowRelevantVideos] = useState(false);
@@ -33,6 +36,7 @@ const App = () => {
 
   // Display error messages
   const [errorMessage, setErrorMessage] = useState("");
+
   // Reset error messages on successful load
   useEffect(() => {
     setErrorMessage("");
@@ -41,17 +45,18 @@ const App = () => {
   return (
     <Layout stylesClass="window">
       <Layout stylesClass="main-layout">
-        {Object.keys(mainYoutubeVideo).length ? (
+        {displayMainYoutubeVideo ? (
           <MainVideo video={mainYoutubeVideo} />
         ) : (
           <LoadingLogo />
         )}
         <Render renderIf={errorMessage.length}>
-          <FormHelperText error={true} children={errorMessage} />
+          <ErrorMessage errorMessage={errorMessage} />
         </Render>
         <SearchBar
           setRelevantVideos={setRelevantVideos}
           setMainYoutubeVideo={setMainYoutubeVideo}
+          setDisplayMainYoutubeVideo={setDisplayMainYoutubeVideo}
           setErrorMessage={setErrorMessage}
         />
         <Render renderIf={relevantVideos.length}>
