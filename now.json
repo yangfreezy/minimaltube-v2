@@ -1,0 +1,8 @@
+{
+  "env": {
+    "YOUTUBE_CLIENT_ID": "@632388719549-6dl99bc5suvri5ptr7agdc12higa3p8p.apps.googleusercontent.com",
+    "YOUTUBE_CLIENT_SECRET": "@NIzA50vtQA4SnXREAZLo6cTv",
+    "YOUTUBE_API_KEY": "@AIzaSyDs7YJvfL2zjEI5Yx-RNtgYM0-qc3wt0uA",
+    "YOUTUBE_SEARCH_URL": "@https://www.googleapis.com/youtube/v3/search"
+  }
+}
