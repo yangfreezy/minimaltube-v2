@@ -1,8 +1,7 @@
 {
-  "env": {
-    "YOUTUBE_CLIENT_ID": "@YOUTUBE_CLIENT_ID",
-    "YOUTUBE_CLIENT_SECRET": "@YOUTUBE_CLIENT_SECRET",
-    "YOUTUBE_API_KEY": "@YOUTUBE_API_KEY",
-    "YOUTUBE_SEARCH_URL": "YOUTUBE_SEARCH_URL"
+  "build": {
+    "env": {
+      "YOUTUBE_API_KEY": "@youtube_api_key"
+    }
   }
 }

@@ -8,7 +8,7 @@ const getYoutubeVideos = async search => {
         part: "snippet",
         maxResults: 6,
         q: search,
-        key: process.env.YOUTUBE_API_KEY
+        key: process.env.youtube_api_key
       }
     });
     data.data.ok = true;
