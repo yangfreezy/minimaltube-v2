@@ -3,6 +3,7 @@ import axios from "axios";
 const getYoutubeVideos = async search => {
   let data;
   try {
+    if (!process.env.youtube_api_key) console.error("API KEY NOT FOUND");
     data = await axios.get("https://www.googleapis.com/youtube/v3/search", {
       params: {
         part: "snippet",
