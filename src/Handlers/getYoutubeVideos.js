@@ -3,13 +3,14 @@ import axios from "axios";
 const getYoutubeVideos = async search => {
   let data;
   try {
-    if (!process.env.YOUTUBE_API_KEY) console.error("API KEY NOT FOUND");
+    if (!process.env.REACT_APP_YOUTUBE_API_KEY)
+      console.error("API KEY NOT FOUND");
     data = await axios.get("https://www.googleapis.com/youtube/v3/search", {
       params: {
         part: "snippet",
         maxResults: 6,
         q: search,
-        key: process.env.YOUTUBE_API_KEY
+        key: process.env.REACT_APP_YOUTUBE_API_KEY
       }
     });
     data.data.ok = true;

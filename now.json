@@ -1,10 +1,10 @@
 {
   "env": {
-    "YOUTUBE_API_KEY": "AIzaSyDs7YJvfL2zjEI5Yx-RNtgYM0-qc3wt0uA"
+    "REACT_APP_YOUTUBE_API_KEY": "AIzaSyDs7YJvfL2zjEI5Yx-RNtgYM0-qc3wt0uA"
   },
   "build": {
     "env": {
-      "YOUTUBE_API_KEY": "AIzaSyDs7YJvfL2zjEI5Yx-RNtgYM0-qc3wt0uA"
+      "REACT_APP_YOUTUBE_API_KEY": "AIzaSyDs7YJvfL2zjEI5Yx-RNtgYM0-qc3wt0uA"
     }
   }
 }
