@@ -11,7 +11,8 @@ const formatVideoData = videos => {
   }));
   return {
     mainVideo: formattedVideos[0],
-    relevantVideos: formattedVideos.slice(1)
+    relevantVideos: formattedVideos.slice(1),
+    ok: true
   };
 };
 

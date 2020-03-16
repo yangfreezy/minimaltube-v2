@@ -7,14 +7,12 @@ import "../App.css";
 
 const MainVideo = ({ video }) => {
   return (
-    <Layout stylesClass="main-video">
+    <Layout>
       <Layout stylesClass="title">{lodash.unescape(video.title)}</Layout>
       <iframe
+        className="main-video-iframe"
         title={lodash.unescape(video.title)}
         src={`https://www.youtube.com/embed/${video.id}`}
-        width="840"
-        height="472.5"
-        frameBorder="0"
         allowFullScreen
       />
     </Layout>

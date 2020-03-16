@@ -17,6 +17,12 @@
   overflow-x: scroll;
 }
 
+.main-video-iframe {
+  width: 840px;
+  height: 472.5px;
+  border: none;
+}
+
 .button-bar {
   display: flex;
   flex-direction: row;
