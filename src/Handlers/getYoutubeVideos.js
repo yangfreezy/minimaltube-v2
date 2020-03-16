@@ -3,7 +3,7 @@ import lodash from "lodash";
 
 const clipString = (str, maxLength) => {
   if (str.length < maxLength) return str;
-  else return str.slice(0, maxLength);
+  else return str.slice(0, maxLength) + "..";
 };
 
 const standardizeString = str => {
