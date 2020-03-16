@@ -14,25 +14,19 @@ import { Layout } from "./Layouts";
 import "./App.css";
 
 const App = () => {
-  // Video state
+  // Youtube Video IDs
   const [mainYoutubeVideo, setMainYoutubeVideo] = useState({});
   const [relevantVideos, setRelevantVideos] = useState([]);
 
-  // Toggle display of main youtube video
+  // Boolean to toggle main video
   const [displayMainYoutubeVideo, setDisplayMainYoutubeVideo] = useState(false);
 
-  // Toggle display of relevant videos
+  // Boolean to toggle relevant videos
   const [showRelevantVideos, setShowRelevantVideos] = useState(false);
+
+  // Show / Hide relevant videos
   const toggleDisplay = () => {
     setShowRelevantVideos(!showRelevantVideos);
-  };
-
-  // Clear state when user clicks "clear" button
-  const clearState = () => {
-    setMainYoutubeVideo({});
-    setRelevantVideos([]);
-    setShowRelevantVideos(false);
-    setDisplayMainYoutubeVideo(false);
   };
 
   // Display error messages
@@ -42,6 +36,14 @@ const App = () => {
   useEffect(() => {
     setErrorMessage("");
   }, [relevantVideos, mainYoutubeVideo]);
+
+  // Reset state to default
+  const clearState = () => {
+    setMainYoutubeVideo({});
+    setRelevantVideos([]);
+    setShowRelevantVideos(false);
+    setDisplayMainYoutubeVideo(false);
+  };
 
   return (
     <Layout stylesClass="window">
