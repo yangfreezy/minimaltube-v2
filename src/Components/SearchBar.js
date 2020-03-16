@@ -18,19 +18,19 @@ const SearchBar = ({
     setSearch(e.target.value);
   };
 
+  const loadVideos = data => {
+    setMainYoutubeVideo(data.items[0]);
+    setDisplayMainYoutubeVideo(true);
+    setRelevantVideos(data.items.slice(1));
+    setSearch("");
+  };
+
   const searchHandler = async (e, search) => {
     e.preventDefault();
     try {
       const { data } = await getYoutubeVideos(search);
-      if (!data.ok) return setErrorMessage("Error retrieving videos");
-      if (!data.items.length) {
-        return setErrorMessage("No videos found for that query!");
-      } else {
-        setMainYoutubeVideo(data.items[0]);
-        setDisplayMainYoutubeVideo(true);
-        setRelevantVideos(data.items.slice(1));
-        setSearch("");
-      }
+      if (!data.items.length) return setErrorMessage("No videos found!");
+      data.ok ? loadVideos(data) : setErrorMessage("Error retrieving videos");
     } catch (err) {
       console.error(err);
     }
