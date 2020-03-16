@@ -18,6 +18,17 @@ const SearchBar = ({
     setSearch(e.target.value);
   };
 
+  const formatVideoData = videos => {
+    return videos.map(video => ({
+      title: video.snippet.title,
+      id: video.id.videoId,
+      thumbnail:
+        video.snippet.thumbnails.high.url ||
+        video.snippet.thumbnails.medium.url ||
+        video.snippet.thumbnails.default.url
+    }));
+  };
+
   const loadVideos = data => {
     setMainYoutubeVideo(data.items[0]);
     setDisplayMainYoutubeVideo(true);
@@ -29,10 +40,14 @@ const SearchBar = ({
     e.preventDefault();
     try {
       const { data } = await getYoutubeVideos(search);
+      if (data.ok) {
+        let videoData = formatVideoData(data);
+        loadVideos(videoData);
+      }
       if (!data.items.length) return setErrorMessage("No videos found!");
-      data.ok ? loadVideos(data) : setErrorMessage("Error retrieving videos");
     } catch (err) {
       console.error(err);
+      setErrorMessage("Error retrieving videos");
     }
   };
 
