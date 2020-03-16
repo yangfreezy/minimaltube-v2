@@ -22,11 +22,11 @@ const App = () => {
   const [displayMainYoutubeVideo, setDisplayMainYoutubeVideo] = useState(false);
 
   // Boolean to toggle relevant videos
-  const [showRelevantVideos, setShowRelevantVideos] = useState(false);
+  const [displayRelevantVideos, setDisplayRelevantVideos] = useState(false);
 
   // Show / Hide relevant videos
   const toggleDisplay = () => {
-    setShowRelevantVideos(!showRelevantVideos);
+    if (relevantVideos.length) setDisplayRelevantVideos(!displayRelevantVideos);
   };
 
   // Display error messages
@@ -41,7 +41,7 @@ const App = () => {
   const clearState = () => {
     setMainYoutubeVideo({});
     setRelevantVideos([]);
-    setShowRelevantVideos(false);
+    setDisplayRelevantVideos(false);
     setDisplayMainYoutubeVideo(false);
   };
 
@@ -54,7 +54,7 @@ const App = () => {
         <Render renderIf={!displayMainYoutubeVideo}>
           <LoadingLogo />
         </Render>
-        <Render renderIf={errorMessage.length}>
+        <Render renderIf={errorMessage}>
           <ErrorMessage errorMessage={errorMessage} />
         </Render>
         <SearchBar
@@ -66,11 +66,11 @@ const App = () => {
         <Render renderIf={relevantVideos.length}>
           <ButtonBar
             toggleDisplay={toggleDisplay}
-            showRelevantVideos={showRelevantVideos}
+            showRelevantVideos={displayRelevantVideos}
             clearState={clearState}
           />
         </Render>
-        <Render renderIf={relevantVideos.length && showRelevantVideos}>
+        <Render renderIf={displayRelevantVideos}>
           <VideoList
             videos={relevantVideos}
             setMainYoutubeVideo={setMainYoutubeVideo}

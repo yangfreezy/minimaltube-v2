@@ -18,7 +18,7 @@ const SearchBar = ({
     setSearch(e.target.value);
   };
 
-  const searchHandler = async (e, search) => {
+  const handleSearch = async (e, search) => {
     e.preventDefault();
 
     const { data } = await getYoutubeVideos(search);
@@ -32,7 +32,7 @@ const SearchBar = ({
   };
 
   return (
-    <form className="form" onSubmit={searchHandler}>
+    <form className="form" onSubmit={handleSearch}>
       <TextField
         value={search}
         onChange={handleChange}
