@@ -1,13 +1,11 @@
 import React from "react";
 import VideoThumbnail from "./VideoThumbnail";
 
-import { Layout } from "./../Layouts";
-
 import "../App.css";
 
 const VideoList = ({ videos, setMainYoutubeVideo }) => {
   return (
-    <Layout stylesClass="video-list">
+    <div className="video-list">
       {videos.map(video => {
         return (
           <VideoThumbnail
@@ -16,7 +14,7 @@ const VideoList = ({ videos, setMainYoutubeVideo }) => {
           />
         );
       })}
-    </Layout>
+    </div>
   );
 };
 export default VideoList;

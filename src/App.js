@@ -9,7 +9,6 @@ import {
   VideoList,
   SearchBar
 } from "./Components";
-import { Layout } from "./Layouts";
 
 import "./App.css";
 
@@ -46,8 +45,8 @@ const App = () => {
   };
 
   return (
-    <Layout stylesClass="window">
-      <Layout stylesClass="main-layout">
+    <div className="window">
+      <div className="main-layout">
         <Render renderIf={displayMainYoutubeVideo}>
           <MainVideo video={mainYoutubeVideo} />
         </Render>
@@ -76,8 +75,8 @@ const App = () => {
             setMainYoutubeVideo={setMainYoutubeVideo}
           />
         </Render>
-      </Layout>
-    </Layout>
+      </div>
+    </div>
   );
 };
 

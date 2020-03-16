@@ -1,21 +1,19 @@
-import React from "react";
+import React, { Fragment } from "react";
 import lodash from "lodash";
-
-import { Layout } from "./../Layouts";
 
 import "../App.css";
 
 const MainVideo = ({ video }) => {
   return (
-    <Layout>
-      <Layout stylesClass="title">{lodash.unescape(video.title)}</Layout>
+    <Fragment>
+      <div className="title">{lodash.unescape(video.title)}</div>
       <iframe
         className="main-video-iframe"
         title={lodash.unescape(video.title)}
         src={`https://www.youtube.com/embed/${video.id}`}
         allowFullScreen
       />
-    </Layout>
+    </Fragment>
   );
 };
 export default MainVideo;

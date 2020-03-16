@@ -1,19 +1,20 @@
 import React from "react";
 import lodash from "lodash";
 
-import { Layout } from "./../Layouts";
-
 import "../App.css";
 
 const VideoThumbnail = ({ video, setMainYoutubeVideo }) => {
+  const handleClick = () => {
+    setMainYoutubeVideo(video);
+  };
   return (
-    <Layout stylesClass="video-thumbnail">
+    <div className="video-thumbnail">
       <img
         alt={lodash.unescape(video.title)}
         src={video.thumbnail}
-        onClick={e => setMainYoutubeVideo(video)}
+        onClick={handleClick}
       />
-    </Layout>
+    </div>
   );
 };
 export default VideoThumbnail;

@@ -2,18 +2,16 @@ import React from "react";
 
 import { Button } from "@material-ui/core";
 
-import { Layout } from "./../Layouts";
-
-const ButtonBar = ({ toggleDisplay, showRelevantVideos, clearState }) => {
+const ButtonBar = ({ toggleDisplay, displayRelevantVideos, clearState }) => {
   return (
-    <Layout stylesClass="button-bar">
+    <div className="button-bar">
       <Button size="small" onClick={toggleDisplay}>
-        {showRelevantVideos ? "Hide" : "Show More"}
+        {displayRelevantVideos ? "Hide" : "Show More"}
       </Button>
       <Button size="small" onClick={clearState}>
         Clear
       </Button>
-    </Layout>
+    </div>
   );
 };
 
