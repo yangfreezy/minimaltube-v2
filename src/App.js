@@ -32,6 +32,7 @@ const App = () => {
     setMainYoutubeVideo({});
     setRelevantVideos([]);
     setShowRelevantVideos(false);
+    setDisplayMainYoutubeVideo(false);
   };
 
   // Display error messages
@@ -45,11 +46,12 @@ const App = () => {
   return (
     <Layout stylesClass="window">
       <Layout stylesClass="main-layout">
-        {displayMainYoutubeVideo ? (
+        <Render renderIf={displayMainYoutubeVideo}>
           <MainVideo video={mainYoutubeVideo} />
-        ) : (
+        </Render>
+        <Render renderIf={!displayMainYoutubeVideo}>
           <LoadingLogo />
-        )}
+        </Render>
         <Render renderIf={errorMessage.length}>
           <ErrorMessage errorMessage={errorMessage} />
         </Render>
