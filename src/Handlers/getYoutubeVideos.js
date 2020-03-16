@@ -2,7 +2,8 @@ import axios from "axios";
 import lodash from "lodash";
 
 const clipString = (str, maxLength) => {
-  return str.length > maxLength ? str.slice(0, maxLength) + ".." : str;
+  if (str.length < maxLength) return str;
+  else return str.slice(0, maxLength);
 };
 
 const standardizeString = str => {
