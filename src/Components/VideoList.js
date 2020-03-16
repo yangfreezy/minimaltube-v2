@@ -9,6 +9,7 @@ const VideoList = ({ videos, setMainYoutubeVideo }) => {
       {videos.map(video => {
         return (
           <VideoThumbnail
+            key={video.id}
             video={video}
             setMainYoutubeVideo={setMainYoutubeVideo}
           />

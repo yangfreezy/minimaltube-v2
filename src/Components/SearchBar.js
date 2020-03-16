@@ -18,7 +18,7 @@ const SearchBar = ({
     setSearch(e.target.value);
   };
 
-  const handleSearch = async (e, search) => {
+  const handleSearch = async e => {
     e.preventDefault();
 
     const data = await getYoutubeVideos(search);
