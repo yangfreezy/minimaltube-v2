@@ -27,6 +27,7 @@ const getYoutubeVideos = async search => {
         key: process.env.REACT_APP_YOUTUBE_API_KEY
       }
     });
+    if (!res.data.items) return { data: { ok: false, empty: true } };
     res.data.ok = true;
     return formatVideoData(res.data.items);
   } catch (err) {
