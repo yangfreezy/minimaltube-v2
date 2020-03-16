@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 import {
   ButtonBar,
@@ -45,38 +45,50 @@ const App = () => {
   };
 
   return (
-    <div className="window">
-      <div className="main-layout">
-        <Render renderIf={displayMainYoutubeVideo}>
-          <MainVideo video={mainYoutubeVideo} />
-        </Render>
-        <Render renderIf={!displayMainYoutubeVideo}>
-          <LoadingLogo />
-        </Render>
-        <Render renderIf={errorMessage}>
-          <ErrorMessage errorMessage={errorMessage} />
-        </Render>
-        <SearchBar
-          setRelevantVideos={setRelevantVideos}
-          setMainYoutubeVideo={setMainYoutubeVideo}
-          setDisplayMainYoutubeVideo={setDisplayMainYoutubeVideo}
-          setErrorMessage={setErrorMessage}
-        />
-        <Render renderIf={relevantVideos.length}>
-          <ButtonBar
-            toggleDisplay={toggleDisplay}
-            showRelevantVideos={displayRelevantVideos}
-            clearState={clearState}
-          />
-        </Render>
-        <Render renderIf={displayRelevantVideos}>
-          <VideoList
-            videos={relevantVideos}
+    <Fragment>
+      <Render renderIf={!displayMainYoutubeVideo}>
+        <div className="window">
+          <div className="main-layout">
+            <LoadingLogo />
+            <SearchBar
+              setRelevantVideos={setRelevantVideos}
+              setMainYoutubeVideo={setMainYoutubeVideo}
+              setDisplayMainYoutubeVideo={setDisplayMainYoutubeVideo}
+              setErrorMessage={setErrorMessage}
+            />
+          </div>
+        </div>
+      </Render>
+      <Render renderIf={displayMainYoutubeVideo}>
+        <div className="main-layout">
+          <Render renderIf={displayMainYoutubeVideo}>
+            <MainVideo video={mainYoutubeVideo} />
+          </Render>
+          <Render renderIf={errorMessage}>
+            <ErrorMessage errorMessage={errorMessage} />
+          </Render>
+          <SearchBar
+            setRelevantVideos={setRelevantVideos}
             setMainYoutubeVideo={setMainYoutubeVideo}
+            setDisplayMainYoutubeVideo={setDisplayMainYoutubeVideo}
+            setErrorMessage={setErrorMessage}
           />
-        </Render>
-      </div>
-    </div>
+          <Render renderIf={relevantVideos.length}>
+            <ButtonBar
+              toggleDisplay={toggleDisplay}
+              displayRelevantVideos={displayRelevantVideos}
+              clearState={clearState}
+            />
+          </Render>
+          <Render renderIf={displayRelevantVideos}>
+            <VideoList
+              videos={relevantVideos}
+              setMainYoutubeVideo={setMainYoutubeVideo}
+            />
+          </Render>
+        </div>
+      </Render>
+    </Fragment>
   );
 };
 

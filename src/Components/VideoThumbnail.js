@@ -1,5 +1,4 @@
 import React from "react";
-import lodash from "lodash";
 
 import "../App.css";
 
@@ -7,13 +6,18 @@ const VideoThumbnail = ({ video, setMainYoutubeVideo }) => {
   const handleClick = () => {
     setMainYoutubeVideo(video);
   };
+  const { title, thumbnail, thumbnailTitle } = video;
   return (
-    <div className="video-thumbnail">
+    <div className="thumbnail">
       <img
-        alt={lodash.unescape(video.title)}
-        src={video.thumbnail}
+        className="thumbnail-img"
+        alt={title}
+        src={thumbnail}
         onClick={handleClick}
       />
+      <div className="thumbnail-title" onClick={handleClick}>
+        {thumbnailTitle}
+      </div>
     </div>
   );
 };

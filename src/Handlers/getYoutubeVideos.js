@@ -1,14 +1,39 @@
 import axios from "axios";
+import lodash from "lodash";
+
+const clipString = (str, maxLength) => {
+  return str.length > maxLength ? str.slice(0, maxLength) + ".." : str;
+};
+
+const standardizeString = str => {
+  return str[0].toUpperCase() + str.slice(1).toLowerCase();
+};
+
+const formatVideoTitle = title => {
+  let unescapedTitle = lodash.unescape(title);
+
+  let clippedMainTitle = clipString(unescapedTitle, 200);
+  let clippedThumbnailTitle = clipString(unescapedTitle, 45);
+
+  let mainTitle = standardizeString(clippedMainTitle);
+  let thumbnailTitle = standardizeString(clippedThumbnailTitle);
+
+  return { mainTitle, thumbnailTitle };
+};
 
 const formatVideoData = videos => {
-  let formattedVideos = videos.map(video => ({
-    title: video.snippet.title,
-    id: video.id.videoId,
-    thumbnail:
-      video.snippet.thumbnails.high.url ||
-      video.snippet.thumbnails.medium.url ||
-      video.snippet.thumbnails.default.url
-  }));
+  let formattedVideos = videos.map(video => {
+    let { mainTitle, thumbnailTitle } = formatVideoTitle(video.snippet.title);
+    return {
+      title: mainTitle,
+      id: video.id.videoId,
+      thumbnail:
+        video.snippet.thumbnails.high.url ||
+        video.snippet.thumbnails.medium.url ||
+        video.snippet.thumbnails.default.url,
+      thumbnailTitle: thumbnailTitle
+    };
+  });
   return {
     mainVideo: formattedVideos[0],
     relevantVideos: formattedVideos.slice(1),

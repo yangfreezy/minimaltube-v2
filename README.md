@@ -1,7 +1,9 @@
-A minimal UI for youtube!
+A minimal UI for Youtube built with React and the Youtube API.
 
-Todos:
+Features to help users focus:
 
-- Make the video thumbnails a scrollable gallery
-- Add a component ThumbnailTitle to appear above the thumbnails on hover
-- Add a youtube channel OAuth integration to integrate your accounts playlists with PlaylistList, Playlist, and PlaylistVideo Components
+- Full Youtube library with no recommended videos until you search something
+- One main video
+- Desensitized video titles (no caps)
+- Limit of 6 clickable videos per query
+- Toggle relevant videos

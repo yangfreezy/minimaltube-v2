@@ -1,20 +1,34 @@
+body {
+  font-family: "Roboto";
+  margin: 0 0;
+  padding: 0 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
 .window {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  overflow: scroll;
 }
 
 .main-layout {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   overflow-y: scroll;
   overflow-x: scroll;
+}
+.main-video {
+  margin-top: 50px;
 }
 
 .main-video-iframe {
@@ -37,13 +51,43 @@
 .video-list {
   display: flex;
   flex-direction: row;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   margin-top: 20px;
 }
 
-.video-thumbnail img {
-  width: 150px;
-  height: 100px;
+.thumbnail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnail-title {
+  position: absolute;
+  font-size: 12px;
+  max-width: 150px;
+  text-align: center;
+  word-wrap: break-word;
+  color: black;
+  font-weight: 600;
+  visibility: hidden;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+  padding: 15px 15px 15px 15px;
+  border-radius: 3px;
+}
+
+.thumbnail:hover .thumbnail-title {
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.thumbnail-img {
+  width: 200px;
+  height: 133.33px;
   margin-left: 10px;
   margin-right: 10px;
 }
