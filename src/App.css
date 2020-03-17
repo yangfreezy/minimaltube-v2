@@ -4,17 +4,14 @@ body {
   padding: 0 0;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
-  overflow-x: scroll;
 }
 
-.window {
+.landing-layout {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  overflow: scroll;
 }
 
 .main-layout {
@@ -24,8 +21,6 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
-  overflow-x: scroll;
 }
 .main-video {
   margin-top: 50px;

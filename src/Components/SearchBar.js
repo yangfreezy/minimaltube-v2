@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { TextField } from "@material-ui/core";
 
-import getYoutubeVideos from "../Handlers/getYoutubeVideos";
+import { getYoutubeVideos } from "../Handlers";
 
 import "./../App.css";
 
@@ -28,11 +28,10 @@ const SearchBar = ({
         ? setErrorMessage("No videos found!")
         : setErrorMessage("Error retrieving videos");
     }
-
-    setMainYoutubeVideo(data.mainVideo);
-    setRelevantVideos(data.relevantVideos);
-    setDisplayMainYoutubeVideo(true);
     setSearch("");
+    setRelevantVideos(data.relevantVideos);
+    setMainYoutubeVideo(data.mainVideo);
+    setDisplayMainYoutubeVideo(true);
   };
 
   return (

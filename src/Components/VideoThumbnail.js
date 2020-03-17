@@ -8,7 +8,7 @@ const VideoThumbnail = ({ video, setMainYoutubeVideo }) => {
   };
   const { title, thumbnail, thumbnailTitle } = video;
   return (
-    <div className="thumbnail">
+    <div className="thumbnail" key={title}>
       <img
         className="thumbnail-img"
         alt={title}

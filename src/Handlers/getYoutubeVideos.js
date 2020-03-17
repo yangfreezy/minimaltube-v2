@@ -10,21 +10,16 @@ const standardizeString = str => {
   return str[0].toUpperCase() + str.slice(1).toLowerCase();
 };
 
-const formatVideoTitle = title => {
-  let unescapedTitle = lodash.unescape(title);
-
-  let clippedMainTitle = clipString(unescapedTitle, 200);
-  let clippedThumbnailTitle = clipString(unescapedTitle, 45);
-
-  let mainTitle = standardizeString(clippedMainTitle);
-  let thumbnailTitle = standardizeString(clippedThumbnailTitle);
-
-  return { mainTitle, thumbnailTitle };
-};
-
 const formatVideoData = videos => {
   let formattedVideos = videos.map(video => {
-    let { mainTitle, thumbnailTitle } = formatVideoTitle(video.snippet.title);
+    let unescapedTitle = lodash.unescape(video.snippet.title);
+
+    let clippedMainTitle = clipString(unescapedTitle, 200);
+    let clippedThumbnailTitle = clipString(unescapedTitle, 45);
+
+    let mainTitle = standardizeString(clippedMainTitle);
+    let thumbnailTitle = standardizeString(clippedThumbnailTitle);
+
     return {
       title: mainTitle,
       id: video.id.videoId,
@@ -35,11 +30,12 @@ const formatVideoData = videos => {
       thumbnailTitle: thumbnailTitle
     };
   });
-  return {
+  let formattedVideoData = {
     mainVideo: formattedVideos[0],
     relevantVideos: formattedVideos.slice(1),
     ok: true
   };
+  return formattedVideoData;
 };
 
 const getYoutubeVideos = async search => {
@@ -55,7 +51,8 @@ const getYoutubeVideos = async search => {
     });
     if (!res.data.items) return { data: { ok: false, empty: true } };
     res.data.ok = true;
-    return formatVideoData(res.data.items);
+    let formattedVideoData = formatVideoData(res.data.items);
+    return formattedVideoData;
   } catch (err) {
     console.error(err);
     return { data: { ok: false } };

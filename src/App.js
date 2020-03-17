@@ -10,6 +10,8 @@ import {
   SearchBar
 } from "./Components";
 
+import { MainLayout, LandingLayout } from "./Layouts";
+
 import "./App.css";
 
 const App = () => {
@@ -23,9 +25,15 @@ const App = () => {
   // Boolean to toggle relevant videos
   const [displayRelevantVideos, setDisplayRelevantVideos] = useState(false);
 
-  // Show / Hide relevant videos
+  // Show / Hide relevant videos, Adjust window
   const toggleDisplay = () => {
-    if (relevantVideos.length) setDisplayRelevantVideos(!displayRelevantVideos);
+    if (displayRelevantVideos) {
+      setDisplayRelevantVideos(false);
+      window.scrollTo(0, 0);
+    } else {
+      setDisplayRelevantVideos(true);
+      window.scrollTo(0, document.body.scrollHeight * 10);
+    }
   };
 
   // Display error messages
@@ -47,8 +55,8 @@ const App = () => {
   return (
     <Fragment>
       <Render renderIf={!displayMainYoutubeVideo}>
-        <div className="window">
-          <div className="main-layout">
+        <LandingLayout>
+          <MainLayout>
             <LoadingLogo />
             <SearchBar
               setRelevantVideos={setRelevantVideos}
@@ -56,11 +64,11 @@ const App = () => {
               setDisplayMainYoutubeVideo={setDisplayMainYoutubeVideo}
               setErrorMessage={setErrorMessage}
             />
-          </div>
-        </div>
+          </MainLayout>
+        </LandingLayout>
       </Render>
       <Render renderIf={displayMainYoutubeVideo}>
-        <div className="main-layout">
+        <MainLayout>
           <Render renderIf={displayMainYoutubeVideo}>
             <MainVideo video={mainYoutubeVideo} />
           </Render>
@@ -86,7 +94,7 @@ const App = () => {
               setMainYoutubeVideo={setMainYoutubeVideo}
             />
           </Render>
-        </div>
+        </MainLayout>
       </Render>
     </Fragment>
   );
