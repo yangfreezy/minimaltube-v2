@@ -19,17 +19,20 @@ const SearchBar = ({
     setSearch(e.target.value);
   };
 
+  const updateVideoState = (videoData, setSearch, setRelevantVideos, setMainVideo, setShowMainVideo) => {
+    setSearch("");
+    setRelevantVideos(videoData.relevantVideos);
+    setMainVideo(videoData.mainVideo);
+    setShowMainVideo(true);
+  }
+
   const handleSearch = async e => {
     e.preventDefault();
     const data = await getYoutubeVideos(search);
     if (!data.ok) return setErrorMessage("Error retrieving videos");
     if (!data.items) return setErrorMessage("No videos found!");
-
     let formattedVideoData = formatVideoData(data.items);
-    setSearch("");
-    setRelevantVideos(formattedVideoData.relevantVideos);
-    setMainVideo(formattedVideoData.mainVideo);
-    setShowMainVideo(true);
+    updateVideoState(formattedVideoData)
   };
 
   return (
