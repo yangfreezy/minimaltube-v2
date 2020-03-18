@@ -6,15 +6,17 @@ import "../App.css";
 const VideoList = ({ videos, setMainYoutubeVideo }) => {
   return (
     <div className="video-list">
-      {videos.map(video => {
-        return (
-          <VideoThumbnail
-            key={video.id}
-            video={video}
-            setMainYoutubeVideo={setMainYoutubeVideo}
-          />
-        );
-      })}
+      <div className="video-bar">
+        {videos.map(video => {
+          return (
+            <VideoThumbnail
+              key={video.id}
+              video={video}
+              setMainYoutubeVideo={setMainYoutubeVideo}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

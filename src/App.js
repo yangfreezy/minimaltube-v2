@@ -32,7 +32,6 @@ const App = () => {
       window.scrollTo(0, 0);
     } else {
       setDisplayRelevantVideos(true);
-      window.scrollTo(0, document.body.scrollHeight * 10);
     }
   };
 

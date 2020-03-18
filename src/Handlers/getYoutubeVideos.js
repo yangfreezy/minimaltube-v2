@@ -44,7 +44,7 @@ const getYoutubeVideos = async search => {
     res = await axios.get("https://www.googleapis.com/youtube/v3/search", {
       params: {
         part: "snippet",
-        maxResults: 6,
+        maxResults: 21,
         q: search,
         key: process.env.REACT_APP_YOUTUBE_API_KEY
       }

@@ -9,7 +9,7 @@ const ButtonBar = ({ toggleDisplay, displayRelevantVideos, clearState }) => {
         {displayRelevantVideos ? "Hide" : "Show More"}
       </Button>
       <Button size="small" onClick={clearState}>
-        Clear
+        Clear Videos
       </Button>
     </div>
   );
