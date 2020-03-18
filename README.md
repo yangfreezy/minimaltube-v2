@@ -10,5 +10,6 @@ Features to help users focus:
 
 TODO:
 
-- Reposition carousel to beginning on re-search
+- Reposition carousel to beginning of div when user makes another search
+- Refactor thumbnail titles to use CSS variables
 - Make mobile responsive based on CSS variables
