@@ -1,6 +1,7 @@
 :root {
   --thumbnail-image-width: 200px;
   --thumbnail-image-height: 133.3px;
+  --thumbnail-title-height: 14px;
   --main-video-width: 756px;
   --main-video-height: 425.25px;
   --font-family: "Roboto";
@@ -91,28 +92,30 @@ body {
 
 .thumbnail-title {
   position: absolute;
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 12px;
+  font-size: var(--thumbnail-title-height);
+  line-height: var(--thumbnail-title-height);
   height: var(--thumbnail-image-height);
   width: var(--thumbnail-image-width);
-  max-width: var(--thumbnail-image-width);
-  max-height: var(--thumbnail-image-height);
+  max-width: calc(var(--thumbnail-image-width) - 25px);
+  max-height: calc(var(--thumbnail-image-height) - 25px);
   text-align: center;
   word-wrap: break-word;
   color: black;
   font-weight: 600;
-  visibility: hidden;
+  letter-spacing: 1px;
   background-color: white;
   opacity: 0;
-  transition: opacity 0.2s, visibility 0.2s;
-  padding: 15px 15px 15px 15px;
+  transition: opacity 0.5s, visibility 0.5s;
+  padding: 25px 25px 25px 25px;
 }
 
 .thumbnail:hover .thumbnail-title {
   visibility: visible;
-  opacity: 0.9;
+  opacity: 0.95;
   cursor: pointer;
 }
 

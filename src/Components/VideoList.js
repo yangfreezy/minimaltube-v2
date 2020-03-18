@@ -3,7 +3,7 @@ import VideoThumbnail from "./VideoThumbnail";
 
 import "../App.css";
 
-const VideoList = ({ videos, setMainYoutubeVideo }) => {
+const VideoList = ({ videos, setMainVideo }) => {
   return (
     <div className="video-list">
       <div className="video-bar">
@@ -12,7 +12,7 @@ const VideoList = ({ videos, setMainYoutubeVideo }) => {
             <VideoThumbnail
               key={video.id}
               video={video}
-              setMainYoutubeVideo={setMainYoutubeVideo}
+              setMainVideo={setMainVideo}
             />
           );
         })}
