@@ -1,11 +1,11 @@
 import lodash from "lodash";
 
+// Truncates a string and adds a ".." to it if it exceeds the max length
 const truncateString = (str, maxLength) => {
   return str.length >= maxLength ? str.slice(0, maxLength) + ".." : str;
 };
 
 // Formats video data from Youtube and splits them into main and relevant videos
-
 const formatVideoData = videos => {
 
   // Format videos

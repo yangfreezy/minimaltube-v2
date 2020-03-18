@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { TextField } from "@material-ui/core";
 
-import { getYoutubeVideos } from "../Handlers";
+import { getYoutubeVideos } from "../API";
 import { formatVideoData } from "./../Helpers";
 
 import "./../App.css";
