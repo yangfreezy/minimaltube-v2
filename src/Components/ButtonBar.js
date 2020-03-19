@@ -4,7 +4,7 @@ import { Button } from "@material-ui/core";
 
 // Two Buttons: One toggles relevant videos, the other clears state
 
-const ButtonBar = ({
+export const ButtonBar = ({
   toggleRelevantVideos,
   showRelevantVideos,
   clearState
@@ -20,5 +20,3 @@ const ButtonBar = ({
     </div>
   );
 };
-
-export default ButtonBar;

@@ -2,7 +2,7 @@ import React from "react";
 
 import "../App.css";
 
-const MainVideo = ({ video }) => {
+export const MainVideo = ({ video }) => {
   const { title, id } = video;
   return (
     <div className="main-video">
@@ -16,4 +16,3 @@ const MainVideo = ({ video }) => {
     </div>
   );
 };
-export default MainVideo;

@@ -1,3 +1,3 @@
-import formatVideoData from "./formatVideoData";
+import { formatVideoData } from "./formatVideoData";
 
 export { formatVideoData };

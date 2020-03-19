@@ -2,13 +2,13 @@ import React from "react";
 
 import "../App.css";
 
-const VideoThumbnail = ({ video, setMainVideo }) => {
+export const VideoThumbnail = ({ video, setMainVideo }) => {
   const { title, thumbnail, thumbnailTitle } = video;
 
   const handleClick = () => {
     setMainVideo(video);
   };
-  
+
   return (
     <div className="thumbnail" key={title}>
       <img
@@ -23,4 +23,3 @@ const VideoThumbnail = ({ video, setMainVideo }) => {
     </div>
   );
 };
-export default VideoThumbnail;

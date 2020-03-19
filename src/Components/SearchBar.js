@@ -7,38 +7,36 @@ import { formatVideoData } from "./../Helpers";
 
 import "./../App.css";
 
-const SearchBar = ({
+export const SearchBar = ({
   setMainVideo,
-  setShowMainVideo,
   setRelevantVideos,
   setErrorMessage
 }) => {
-  const [search, setSearch] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleChange = e => {
-    setSearch(e.target.value);
+    setSearchQuery(e.target.value);
   };
 
-  const updateVideoState = (videoData, setSearch, setRelevantVideos, setMainVideo, setShowMainVideo) => {
-    setSearch("");
+  const updateVideoState = videoData => {
+    setSearchQuery("");
     setRelevantVideos(videoData.relevantVideos);
     setMainVideo(videoData.mainVideo);
-    setShowMainVideo(true);
-  }
+  };
 
   const handleSearch = async e => {
     e.preventDefault();
-    const data = await getYoutubeVideos(search);
+    const data = await getYoutubeVideos(searchQuery);
     if (!data.ok) return setErrorMessage("Error retrieving videos");
     if (!data.items) return setErrorMessage("No videos found!");
-    let formattedVideoData = formatVideoData(data.items);
-    updateVideoState(formattedVideoData)
+    const videoData = formatVideoData(data.items);
+    updateVideoState(videoData);
   };
 
   return (
     <form className="form" onSubmit={handleSearch}>
       <TextField
-        value={search}
+        value={searchQuery}
         onChange={handleChange}
         placeholder="Search"
         fullWidth
@@ -47,4 +45,3 @@ const SearchBar = ({
     </form>
   );
 };
-export default SearchBar;

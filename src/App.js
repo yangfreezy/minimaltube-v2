@@ -5,7 +5,6 @@ import {
   ErrorMessage,
   LoadingLogo,
   MainVideo,
-  Render,
   VideoList,
   SearchBar
 } from "./Components";
@@ -14,13 +13,19 @@ import { MainLayout, LandingLayout } from "./Layouts";
 
 import "./App.css";
 
-const App = () => {
-  // Youtube Video IDs
+export const App = () => {
+  // Youtube Videos
   const [mainVideo, setMainVideo] = useState({});
   const [relevantVideos, setRelevantVideos] = useState([]);
 
-  // Boolean to toggle main video
-  const [showMainVideo, setShowMainVideo] = useState(false);
+  // Boolean to conditionally render main video components
+  const [mainVideoLoaded, setMainVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    Object.keys(mainVideo).length
+      ? setMainVideoLoaded(true)
+      : setMainVideoLoaded(false);
+  }, [mainVideo]);
 
   // Boolean to toggle relevant videos
   const [showRelevantVideos, setShowRelevantVideos] = useState(false);
@@ -48,52 +53,42 @@ const App = () => {
     setMainVideo({});
     setRelevantVideos([]);
     setShowRelevantVideos(false);
-    setShowMainVideo(false);
   };
 
   return (
     <Fragment>
-      <Render renderIf={!showMainVideo}>
+      {mainVideoLoaded ? (
+        <MainLayout>
+          {mainVideoLoaded && <MainVideo video={mainVideo} />}
+          {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
+          <SearchBar
+            setRelevantVideos={setRelevantVideos}
+            setMainVideo={setMainVideo}
+            setErrorMessage={setErrorMessage}
+          />
+          {relevantVideos.length && (
+            <ButtonBar
+              toggleRelevantVideos={toggleRelevantVideos}
+              showRelevantVideos={showRelevantVideos}
+              clearState={clearState}
+            />
+          )}
+          {showRelevantVideos && (
+            <VideoList videos={relevantVideos} setMainVideo={setMainVideo} />
+          )}
+        </MainLayout>
+      ) : (
         <LandingLayout>
           <MainLayout>
             <LoadingLogo />
             <SearchBar
               setRelevantVideos={setRelevantVideos}
               setMainVideo={setMainVideo}
-              setShowMainVideo={setShowMainVideo}
               setErrorMessage={setErrorMessage}
             />
           </MainLayout>
         </LandingLayout>
-      </Render>
-      <Render renderIf={showMainVideo}>
-        <MainLayout>
-          <Render renderIf={showMainVideo}>
-            <MainVideo video={mainVideo} />
-          </Render>
-          <Render renderIf={errorMessage}>
-            <ErrorMessage errorMessage={errorMessage} />
-          </Render>
-          <SearchBar
-            setRelevantVideos={setRelevantVideos}
-            setMainVideo={setMainVideo}
-            setShowMainVideo={setShowMainVideo}
-            setErrorMessage={setErrorMessage}
-          />
-          <Render renderIf={relevantVideos.length}>
-            <ButtonBar
-              toggleRelevantVideos={toggleRelevantVideos}
-              showRelevantVideos={showRelevantVideos}
-              clearState={clearState}
-            />
-          </Render>
-          <Render renderIf={showRelevantVideos}>
-            <VideoList videos={relevantVideos} setMainVideo={setMainVideo} />
-          </Render>
-        </MainLayout>
-      </Render>
+      )}
     </Fragment>
   );
 };
-
-export default App;

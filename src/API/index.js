@@ -1,3 +1,3 @@
-import getYoutubeVideos from "./getYoutubeVideos";
+import { getYoutubeVideos } from "./getYoutubeVideos";
 
 export { getYoutubeVideos };
