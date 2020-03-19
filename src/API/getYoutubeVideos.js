@@ -1,11 +1,9 @@
 import axios from "axios";
 
-// Queries Youtube API returning 21 videos
 /**
- * Truncates a string and appends a '..' to it if it exceeds a specified length
+ * Makes a get request to the Youtube API requesting 21 videos
  * @param {String} searchQuery search query
- * @param {Number} maxLength MaxLength of string
- * @returns {String}
+ * @returns Array of video data
  **/
 
 export const getYoutubeVideos = async searchQuery => {
