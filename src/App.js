@@ -57,9 +57,9 @@ export const App = () => {
 
   return (
     <Fragment>
-      {mainVideoLoaded ? (
+      {(mainVideoLoaded && (
         <MainLayout>
-          {mainVideoLoaded && <MainVideo video={mainVideo} />}
+          <MainVideo video={mainVideo} />
           {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
           <SearchBar
             setRelevantVideos={setRelevantVideos}
@@ -77,7 +77,7 @@ export const App = () => {
             <VideoList videos={relevantVideos} setMainVideo={setMainVideo} />
           )}
         </MainLayout>
-      ) : (
+      )) || (
         <LandingLayout>
           <MainLayout>
             <LoadingLogo />

@@ -10,6 +10,8 @@ Features to help users focus:
 
 TODO:
 
+- Split App into Main Video and Landing containers
+- Refactor with Context API
 - Reposition carousel to beginning of div when user makes another search
 - Refactor thumbnail titles to use CSS variables
 - Make mobile responsive based on CSS variables
