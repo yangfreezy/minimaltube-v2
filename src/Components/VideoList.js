@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { VideoThumbnail } from "./VideoThumbnail";
 
@@ -18,4 +19,9 @@ export const VideoList = ({ videos, setMainVideo }) => {
       </div>
     </div>
   );
+};
+
+VideoList.propTypes = {
+  videos: PropTypes.array,
+  setMainVideo: PropTypes.func
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const MainVideo = ({ video }) => {
   const { title, id } = video;
@@ -13,4 +14,8 @@ export const MainVideo = ({ video }) => {
       />
     </div>
   );
+};
+
+MainVideo.propTypes = {
+  video: PropTypes.object
 };

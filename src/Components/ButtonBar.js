@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { Button } from "@material-ui/core";
 
@@ -19,4 +20,10 @@ export const ButtonBar = ({
       </Button>
     </div>
   );
+};
+
+ButtonBar.propTypes = {
+  toggleRelevantVideos: PropTypes.func,
+  showRelevantVideos: PropTypes.bool,
+  clearState: PropTypes.func
 };

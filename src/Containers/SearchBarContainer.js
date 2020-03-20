@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import { SearchBar } from "./../Components";
 
@@ -38,4 +39,10 @@ export const SearchBarContainer = ({
       handleSearch={handleSearch}
     />
   );
+};
+
+SearchBarContainer.propTypes = {
+  setMainVideo: PropTypes.func,
+  setRelevantVideos: PropTypes.func,
+  setErrorMessage: PropTypes.func
 };

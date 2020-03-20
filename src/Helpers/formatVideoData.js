@@ -1,4 +1,5 @@
 import lodash from "lodash";
+import PropTypes from "prop-types";
 
 /**
  * Truncates a string and appends a '..' to it if it exceeds a specified length
@@ -6,8 +7,14 @@ import lodash from "lodash";
  * @param {Number} maxLength MaxLength of string
  * @returns {String}
  **/
+
 const truncateString = (str, maxLength) => {
   return str.length >= maxLength ? str.slice(0, maxLength) + ".." : str;
+};
+
+truncateString.propTypes = {
+  str: PropTypes.string,
+  maxLength: PropTypes.number
 };
 
 /**
@@ -49,4 +56,8 @@ export const formatVideoData = videos => {
   };
 
   return formattedVideoData;
+};
+
+formatVideoData.propTypes = {
+  videos: PropTypes.array
 };
