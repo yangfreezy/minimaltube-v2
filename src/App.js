@@ -1,12 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 
+import { SearchBarContainer } from "./Containers";
+
 import {
   ButtonBar,
   ErrorMessage,
   LoadingLogo,
   MainVideo,
-  VideoList,
-  SearchBar
+  VideoList
 } from "./Components";
 
 import { MainLayout, LandingLayout } from "./Layouts";
@@ -57,11 +58,11 @@ export const App = () => {
 
   return (
     <Fragment>
-      {(mainVideoLoaded && (
+      {mainVideoLoaded ? (
         <MainLayout>
           <MainVideo video={mainVideo} />
           {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
-          <SearchBar
+          <SearchBarContainer
             setRelevantVideos={setRelevantVideos}
             setMainVideo={setMainVideo}
             setErrorMessage={setErrorMessage}
@@ -77,11 +78,11 @@ export const App = () => {
             <VideoList videos={relevantVideos} setMainVideo={setMainVideo} />
           )}
         </MainLayout>
-      )) || (
+      ) : (
         <LandingLayout>
           <MainLayout>
             <LoadingLogo />
-            <SearchBar
+            <SearchBarContainer
               setRelevantVideos={setRelevantVideos}
               setMainVideo={setMainVideo}
               setErrorMessage={setErrorMessage}

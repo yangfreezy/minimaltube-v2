@@ -1,7 +1,5 @@
 import React from "react";
 
-import "../App.css";
-
 export const MainVideo = ({ video }) => {
   const { title, id } = video;
   return (

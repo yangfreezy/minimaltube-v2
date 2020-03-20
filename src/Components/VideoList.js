@@ -1,7 +1,6 @@
 import React from "react";
-import { VideoThumbnail } from "./VideoThumbnail";
 
-import "../App.css";
+import { VideoThumbnail } from "./VideoThumbnail";
 
 export const VideoList = ({ videos, setMainVideo }) => {
   return (
